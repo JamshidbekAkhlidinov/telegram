@@ -1,0 +1,20 @@
+{
+  "name": "ustadev/telegram",
+  "description": "Telegram bot api",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "ustadev\\telegram\\": "/"
+    }
+  },
+  "authors": [
+    {
+      "name": "jamshidbekakhlidinov",
+      "email": "jamshidbekakhlidinov@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.0"
+  }
+}
