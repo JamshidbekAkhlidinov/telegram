@@ -1,6 +1,10 @@
 <h2>Telegram bot uchun qulay repositoriya</h2>
 ***
 
+**O'rnatish**
+        
+    composer require ustadev/telegram
+
 Ishlatish uchun qo'llanma
 
 ```php
