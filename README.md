@@ -2,6 +2,7 @@
 ***
 
 **O'rnatish**
+
         
     composer require ustadev/telegram
 
@@ -43,4 +44,32 @@ Ishlatish uchun qo'llanma
 ?>
 
 ```
+
+**Buttonlar(tugmalar) qo'yish uchun**
+
+```php
+$keyboard = new Keyboard();
+$keyboard->addCallBack('CallBack','callBackData');
+$keyboard->addUrl('Url link','https://t.me/jamshidbekakhlidinov');
+$keyboard->addRow();
+$keyboard->addSwtichInlineQueryCurrentChat('Query chat','query choosen chat');
+$keyboard->addSwtichInlineQuery('Query','query text');
+$keyboard->addRow();
+$keyboard->addWebApp('web app', 'https://ustadev.uz');
+$keyboard->addRequestPoll('poll button');
+
+if ($text == '/button') {
+    $bot->sendMessage(
+        $user_id, 
+        "<b>Buttons</b>",
+        [
+            'reply_markup' => $keyboard->init(),
+            'parse_mode' => 'html',
+        ]
+   );
+}
+
+```
+
+
 # telegram
