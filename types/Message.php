@@ -17,6 +17,7 @@ use ustadev\telegram\traits\Document;
 use ustadev\telegram\traits\File;
 use ustadev\telegram\traits\Location;
 use ustadev\telegram\traits\MessageEntity;
+use ustadev\telegram\traits\Photo;
 use ustadev\telegram\traits\Poll;
 use ustadev\telegram\traits\PollAnswer;
 use ustadev\telegram\traits\PollOption;
@@ -32,7 +33,7 @@ use ustadev\telegram\traits\WebAppData;
 class Message extends Objects
 {
     use  Audio, Chat, Contact, Dice, Document, File, Location;
-    use MessageEntity, Poll, PollAnswer, PollOption, Story;
+    use MessageEntity, Poll, Photo, PollAnswer, PollOption, Story;
     use Text, User, Venue, Video, VideoNote, Voice, WebAppData;
 
     public function getMessageId()

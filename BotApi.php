@@ -152,6 +152,19 @@ class BotApi
     }
 
 
+    public function deleteMessage($chat_id, $message_id)
+    {
+        $fields = ['chat_id' => $chat_id, 'message_id' => $message_id];
+        return $this->request('deleteMessage', $fields);
+    }
+
+    public function deleteMessages($chat_id, $message_ids)
+    {
+        $fields = ['chat_id' => $chat_id, 'message_id' => $message_ids];
+        return $this->request('deleteMessages', $fields);
+    }
+
+
     public function getMe()
     {
         return $this->request('getMe');
