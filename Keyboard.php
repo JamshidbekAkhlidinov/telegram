@@ -19,6 +19,13 @@ class Keyboard
 
     private $buttonType = self::DEFAULT;
 
+    public $is_persistent = false;
+    public $resize_keyboard = true;
+    public $one_time_keyboard = false;
+    public $input_field_placeholder = "placeholder";
+
+    public $selective = true;
+
 
     public function addRow()
     {
@@ -156,7 +163,12 @@ class Keyboard
     private function initCustomKeyboard()
     {
         return json_encode([
-            'keyboard' => $this->keyboard
+            'keyboard' => $this->keyboard,
+            'is_persistent' => $this->is_persistent,
+            'resize_keyboard' => $this->resize_keyboard,
+            'one_time_keyboard' => $this->one_time_keyboard,
+            'input_field_placeholder' => $this->input_field_placeholder,
+            'selective' => $this->selective,
         ]);
     }
 
