@@ -2,8 +2,12 @@
 
 namespace ustadev\telegram;
 
+use ustadev\telegram\traits\BotApiChat;
+
 class BotApi
 {
+    use BotApiChat;
+
     public $token;
 
     public function __construct($token)
@@ -15,7 +19,6 @@ class BotApi
     {
         $fields = array_merge(['inline_query_id' => $queryId, 'results' => $results], $options);
         return $this->request('answerInlineQuery', $fields);
-
     }
 
     public function sendMessage($chat_id, $text, $options = [])
