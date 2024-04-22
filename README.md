@@ -175,4 +175,72 @@ if ($update->isInlineQuery()) {
 
 <img src="docphoto/inline.png" alt="rasm">
 
+**Kanallar bilan ishlash**
+
+```php
+if ($update->isChannelPost()) {
+    $post = $update->getChannelPost();
+    $text = $post->isText() ? $post->getText() : '';
+    $chat = $post->getSenderChat();
+    $chat_id = $chat->getId();
+    $title = $chat->getTitle();
+
+    if ($text == "#help") {
+        $this->botApi->sendMessage(
+            $chat_id,
+            "salom <b>{$title}</b>",
+        );
+        $this->botApi->deleteMessage(
+            $chat_id,
+            $post->getMessageId()
+        );
+    }
+}
+```
+
+**Kanaldagi taxrirlashlar(edit) dagi updatelarni olish**
+
+```php
+if ($update->isEditedChannelPost()) {
+    $post = $update->getEditedChannelPost();
+    $text = $post->isText() ? $post->getText() : '';
+    $chat = $post->getSenderChat();
+    $chat_id = $chat->getId();
+    $title = $chat->getTitle();
+
+    if ($text == "#help123") {
+        $this->botApi->sendMessage(
+            $chat_id,
+            "salom <b>{$title}</b>",
+        );
+        $this->botApi->deleteMessage(
+            $chat_id,
+            $post->getMessageId()
+        );
+    }
+}
+```
+
+
+## Proxy server bilan ishlash
+
+Telegram botning serverga qo'ymagan xolatda local ishlatish imkonini beradi
+
+Botni php -S comandasi orqali ishga tushurib olamiz.
+
+``php -S localhost:1212 bot.php``
+
+proxy.php faylini yaratamiz
+
+```php
+use ustadev\telegram\proxy\Proxy;
+
+$token = 'bot token';
+$url = 'http://localhost:1212';
+$proxy = new Proxy($token, $url);
+$proxy->loop();
+```
+
+Endi proxy ni ishga tushuramiz: ``php proxy.php``
+
 # telegram
