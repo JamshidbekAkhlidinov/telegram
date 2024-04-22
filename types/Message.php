@@ -10,6 +10,7 @@ namespace ustadev\telegram\types;
 
 use ustadev\telegram\Objects;
 use ustadev\telegram\traits\Audio;
+use ustadev\telegram\traits\Caption;
 use ustadev\telegram\traits\Chat;
 use ustadev\telegram\traits\Contact;
 use ustadev\telegram\traits\Dice;
@@ -34,7 +35,7 @@ class Message extends Objects
 {
     use  Audio, Chat, Contact, Dice, Document, File, Location;
     use MessageEntity, Poll, Photo, PollAnswer, PollOption, Story;
-    use Text, User, Venue, Video, VideoNote, Voice, WebAppData;
+    use Text, Caption, User, Venue, Video, VideoNote, Voice, WebAppData;
 
     public function getMessageId()
     {
