@@ -10,7 +10,7 @@ namespace ustadev\telegram\enums;
 
 interface ChatActionEnum
 {
-    public const messages = 'messages';
+    public const message = 'typing';
     public const upload_photo = 'upload_photo';
     public const record_video = 'record_video';
     public const upload_video = 'upload_video';

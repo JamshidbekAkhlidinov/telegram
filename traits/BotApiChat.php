@@ -118,19 +118,35 @@ trait BotApiChat
         ]);
     }
 
-    public function sendChatAction($action)
+    public function sendChatAction($chat_id, $action)
     {
         return $this->request('sendChatAction', [
             'action' => $action,
+            'chat_id' => $chat_id,
         ]);
     }
 
-    public function setMessageReaction($chat_id, $message_id, $reaction)
+    /**
+     * @param $chat_id string chat_id in the chat
+     * @param $message_id integer id of the message
+     * @param $reaction string default random reaction
+     */
+    public function setMessageReaction($chat_id, $message_id, $reaction = null)
     {
+        if (!$reaction) {
+            $reactions = ["👍", "👎", "❤️", "🔥", "🥰", "👏", "😁", "🤔", "🤯", "😱", "🤬", "😢", "🎉", "🤩", "🤮", "💩", "🙏", "👌", "🕊", "🤡", "🥱", "🥴", "😍", "🐳", "❤️‍🔥", "🌚", "🌭", "💯", "🤣", "⚡️", "🍌", "🏆", "💔", "🤨", "😐", "🍓", "🍾", "💋", "🖕", "😈", "😴", "😭", "🤓", "👻", "👨‍💻", "👀", "🎃", "🙈", "😇", "😨", "🤝", "✍️", "🤗", "🫡", "🎅", "🎄", "☃️", "💅", "🤪", "🗿", "🆒", "💘", "🙉", "🦄", "😘", "💊", "🙊", "😎", "👾", "🤷‍♂️", "🤷", "🤷‍♀️", "😡"];
+            $reaction = array_rand($reactions, 2);
+            $reaction = $reactions[$reaction[0]];
+        }
         return $this->request('setMessageReaction', [
             'chat_id' => $chat_id,
             'message_id' => $message_id,
-            'reaction' => $reaction
+            'reaction' => json_encode([
+                [
+                    'emoji' => $reaction,
+                    'type' => 'emoji'
+                ]
+            ])
         ]);
     }
 
@@ -149,4 +165,39 @@ trait BotApiChat
             'file_id' => $file_id,
         ]);
     }
+
+    public function banChatMember($chat_id, $user_id, $until_date = 10 * 3600, $revoke_messages = true)
+    {
+        return $this->request('banChatMember', [
+            'chat_id' => $chat_id,
+            'user_id' => $user_id,
+            'until_date' => $until_date,
+            'revoke_messages' => $revoke_messages,
+        ]);
+    }
+
+    public function unbanChatMember($chat_id, $user_id)
+    {
+        return $this->request('unbanChatMember', [
+            'chat_id' => $chat_id,
+            'user_id' => $user_id,
+        ]);
+    }
+
+    public function exportChatInviteLink($chat_id)
+    {
+        return $this->request('exportChatInviteLink', [
+            'chat_id' => $chat_id,
+        ]);
+    }
+
+
+    public function createChatInviteLink($chat_id)
+    {
+        return $this->request('createChatInviteLink', [
+            'chat_id' => $chat_id,
+        ]);
+    }
+
+
 }
