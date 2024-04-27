@@ -22,6 +22,7 @@ use ustadev\telegram\traits\Poll;
 use ustadev\telegram\traits\PollAnswer;
 use ustadev\telegram\traits\PollOption;
 use ustadev\telegram\traits\SenderChat;
+use ustadev\telegram\traits\Sticker;
 use ustadev\telegram\traits\Story;
 use ustadev\telegram\traits\Text;
 use ustadev\telegram\traits\User;
@@ -33,9 +34,9 @@ use ustadev\telegram\traits\WebAppData;
 
 class ChannelPost extends Objects
 {
-    use SenderChat,Caption;
+    use SenderChat, Caption;
     use  Audio, Contact, Dice, Document, File, Location;
-    use MessageEntity, Photo,Poll, PollAnswer, PollOption, Story;
+    use MessageEntity, Photo, Sticker, Poll, PollAnswer, PollOption, Story;
     use Text, User, Venue, Video, VideoNote, Voice, WebAppData;
 
     public function getMessageId()

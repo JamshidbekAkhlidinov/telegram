@@ -63,6 +63,13 @@ class BotApi
         return $this->request('sendSticker', $fields);
     }
 
+    public function getStickerGroup($name)
+    {
+        return $this->request('getStickerSet', [
+            'name' => $name,
+        ]);
+    }
+
     public function sendVideoNote($chat_id, $video_note, $options = [])
     {
         $fields = array_merge(['chat_id' => $chat_id, 'video_note' => $video_note], $options);
@@ -204,4 +211,6 @@ class BotApi
 
         return json_decode($result, true);
     }
+
+
 }
