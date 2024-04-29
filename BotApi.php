@@ -3,10 +3,11 @@
 namespace ustadev\telegram;
 
 use ustadev\telegram\traits\BotApiChat;
+use ustadev\telegram\traits\BotApiEditMessage;
 
 class BotApi
 {
-    use BotApiChat;
+    use BotApiChat,BotApiEditMessage;
 
     public $token;
 
