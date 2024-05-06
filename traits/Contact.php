@@ -12,7 +12,7 @@ trait Contact
 {
     public function isContact()
     {
-        return isset($this->update['chat']);
+        return isset($this->update['contact']);
     }
 
     public function getContact()
