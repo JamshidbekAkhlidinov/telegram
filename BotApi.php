@@ -7,7 +7,7 @@ use ustadev\telegram\traits\BotApiEditMessage;
 
 class BotApi
 {
-    use BotApiChat,BotApiEditMessage;
+    use BotApiChat, BotApiEditMessage;
 
     public $token;
 
@@ -21,6 +21,13 @@ class BotApi
         $fields = array_merge(['inline_query_id' => $queryId, 'results' => $results], $options);
         return $this->request('answerInlineQuery', $fields);
     }
+
+    public function answerCallbackQuery($callback_id, $text, $options = [])
+    {
+        $fields = array_merge(['callback_id' => $callback_id, 'text' => $text, 'show_alerts' => false], $options);
+        return $this->request('answerCallbackQuery',$fields);
+    }
+
 
     public function sendMessage($chat_id, $text, $options = [])
     {
