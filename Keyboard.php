@@ -12,6 +12,7 @@ class Keyboard
 {
     private const INLINE = 'inline';
     private const DEFAULT = 'default';
+    private const REMOVE = 'remove';
 
     private $keyboard = [];
 
@@ -159,7 +160,6 @@ class Keyboard
         ]);
     }
 
-
     private function initCustomKeyboard()
     {
         return json_encode([
@@ -172,14 +172,26 @@ class Keyboard
         ]);
     }
 
+    public function removeKeyboard()
+    {
+        if (empty($this->keyboard)) {
+            $this->buttonType = self::REMOVE;
+        }
+        return $this;
+    }
+
 
     public function init()
     {
-        if ($this->buttonType == self::INLINE) {
+        if ($this->buttonType == self::REMOVE) {
+            return json_encode([
+                'remove_keyboard' => true,
+            ]);
+        } elseif ($this->buttonType == self::INLINE) {
             return $this->initInlineKeyboard();
+        } else {
+            return $this->initCustomKeyboard();
         }
-
-        return $this->initCustomKeyboard();
     }
 
 }
