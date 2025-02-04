@@ -1,7 +1,7 @@
 <?php
 /*
  *  Jamshidbek Akhlidinov
- *   3 - 4 2024 19:29:38
+ *   20 - 4 2024 19:33:16
  *   https://ustadev.uz
  *   https://github.com/JamshidbekAkhlidinov
  */
@@ -22,6 +22,7 @@ use ustadev\telegram\traits\Photo;
 use ustadev\telegram\traits\Poll;
 use ustadev\telegram\traits\PollAnswer;
 use ustadev\telegram\traits\PollOption;
+use ustadev\telegram\traits\SenderChat;
 use ustadev\telegram\traits\Sticker;
 use ustadev\telegram\traits\Story;
 use ustadev\telegram\traits\Text;
@@ -32,11 +33,12 @@ use ustadev\telegram\traits\VideoNote;
 use ustadev\telegram\traits\Voice;
 use ustadev\telegram\traits\WebAppData;
 
-class Message extends Objects
+class EditedChannelPost extends Objects
 {
-    use  Audio, Chat, Contact, Dice, Document, File, Location;
-    use MessageEntity, Poll, Photo, Sticker, PollAnswer, PollOption, Story;
-    use Text, Caption, User, Venue, Video, VideoNote, Voice, WebAppData;
+    use SenderChat, Caption;
+    use  Audio, Contact, Dice, Document, File, Location;
+    use MessageEntity, Photo, Sticker, Poll, PollAnswer, PollOption, Story;
+    use Text, User, Venue, Video, VideoNote, Voice, WebAppData;
 
     public function getMessageId()
     {

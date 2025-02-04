@@ -16,6 +16,7 @@ use ustadev\telegram\traits\Message;
 class CallbackQuery extends Objects
 {
     use Chat,User, Message;
+
     public function getId()
     {
         return $this->getValue('id');

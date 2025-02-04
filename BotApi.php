@@ -2,8 +2,13 @@
 
 namespace ustadev\telegram;
 
+use ustadev\telegram\traits\BotApiChat;
+use ustadev\telegram\traits\BotApiEditMessage;
+
 class BotApi
 {
+    use BotApiChat, BotApiEditMessage;
+
     public $token;
 
     public function __construct($token)
@@ -15,8 +20,14 @@ class BotApi
     {
         $fields = array_merge(['inline_query_id' => $queryId, 'results' => $results], $options);
         return $this->request('answerInlineQuery', $fields);
-
     }
+
+    public function answerCallbackQuery($callback_id, $text, $options = [])
+    {
+        $fields = array_merge(['callback_id' => $callback_id, 'text' => $text, 'show_alerts' => false], $options);
+        return $this->request('answerCallbackQuery',$fields);
+    }
+
 
     public function sendMessage($chat_id, $text, $options = [])
     {
@@ -58,6 +69,13 @@ class BotApi
     {
         $fields = array_merge(['chat_id' => $chat_id, 'sticker' => $sticker], $options);
         return $this->request('sendSticker', $fields);
+    }
+
+    public function getStickerGroup($name)
+    {
+        return $this->request('getStickerSet', [
+            'name' => $name,
+        ]);
     }
 
     public function sendVideoNote($chat_id, $video_note, $options = [])
@@ -152,6 +170,19 @@ class BotApi
     }
 
 
+    public function deleteMessage($chat_id, $message_id)
+    {
+        $fields = ['chat_id' => $chat_id, 'message_id' => $message_id];
+        return $this->request('deleteMessage', $fields);
+    }
+
+    public function deleteMessages($chat_id, $message_ids)
+    {
+        $fields = ['chat_id' => $chat_id, 'message_id' => $message_ids];
+        return $this->request('deleteMessages', $fields);
+    }
+
+
     public function getMe()
     {
         return $this->request('getMe');
@@ -188,4 +219,6 @@ class BotApi
 
         return json_decode($result, true);
     }
+
+
 }
