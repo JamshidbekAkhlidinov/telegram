@@ -14,8 +14,8 @@ Ishlatish uchun qo'llanma
 
 ```php
 <?php
-    $botApi = new BotApi("$token");
-    $update = new Update($botApi->getWebhookUpdate());
+    $bot = new BotApi("$token");
+    $update = new Update($bot->getWebhookUpdate());
 
      if ($update->isMessage()) {
         $message = $update->getMessage();
@@ -80,8 +80,8 @@ if ($text == '/button') {
 **CallBack buttonlar bilan ishlash**
 
 ```php
-$botApi = new BotApi("$token");
-$update = new Update($botApi->getWebhookUpdate());
+$bot = new BotApi("$token");
+$update = new Update($bot->getWebhookUpdate());
 
 if ($update->isCallbackQuery()) {
     $callback = $update->getCallbackQuery();
@@ -93,7 +93,7 @@ if ($update->isCallbackQuery()) {
     $keyboard->addCallbackDataButton("Button title", "data_name");
     
     if ($data == 'data_name') {
-        $botApi->sendMessage(
+        $bot->sendMessage(
             $user_id, 
             "<b>Your text</b>", 
             [
@@ -112,8 +112,8 @@ Bu yerda turli xildagi respons lar yaratish va ularning attribute lari yozib qo'
 https://core.telegram.org/bots/api#inlinequeryresult
 
 ```php
-$botApi = new BotApi("$token");
-$update = new Update($botApi->getWebhookUpdate());
+$bot = new BotApi("$token");
+$update = new Update($bot->getWebhookUpdate());
 
 if ($update->isInlineQuery()) {
     $inlineQuery = $update->getInlineQuery();
@@ -135,7 +135,7 @@ if ($update->isInlineQuery()) {
                 'caption' => $query,
             ]
         );
-         $botApi->answerInlineQuery(
+         $bot->answerInlineQuery(
             $query_id,
             $response->init(),
         );
@@ -150,7 +150,7 @@ if ($update->isInlineQuery()) {
                 'description' => 'bu xabar chtga yuboriladi'
             ]
           );
-         $botApi->answerInlineQuery(
+         $bot->answerInlineQuery(
             $query_id,
             $response->init(),
         );
@@ -166,7 +166,7 @@ if ($update->isInlineQuery()) {
                 'caption' => $query
             ]
          );
-         $botApi->answerInlineQuery(
+         $bot->answerInlineQuery(
             $query_id,
             $response->init(),
         );
@@ -177,7 +177,7 @@ if ($update->isInlineQuery()) {
 ```
 **Mana shu xolatdagi query lardan foydalnish mumkun**
 
-<img src="docphoto/inline.png" alt="rasm">
+<img src="docphoto/inline.png" alt="rasm" width="100%">
 
 **Kanallar bilan ishlash**
 
@@ -190,11 +190,11 @@ if ($update->isChannelPost()) {
     $title = $chat->getTitle();
 
     if ($text == "#help") {
-        $this->botApi->sendMessage(
+        $bot->sendMessage(
             $chat_id,
             "salom <b>{$title}</b>",
         );
-        $this->botApi->deleteMessage(
+        $bot->deleteMessage(
             $chat_id,
             $post->getMessageId()
         );
@@ -213,11 +213,11 @@ if ($update->isEditedChannelPost()) {
     $title = $chat->getTitle();
 
     if ($text == "#help123") {
-        $this->botApi->sendMessage(
+        $bot->sendMessage(
             $chat_id,
             "salom <b>{$title}</b>",
         );
-        $this->botApi->deleteMessage(
+        $bot->deleteMessage(
             $chat_id,
             $post->getMessageId()
         );
