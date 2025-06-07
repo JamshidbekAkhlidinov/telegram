@@ -40,6 +40,6 @@ class BotApi
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         $response = curl_exec($ch);
         curl_close($ch);
-        return json_decode($response, true);;
+        return json_decode($response, true);
     }
 }

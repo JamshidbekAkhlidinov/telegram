@@ -108,6 +108,13 @@ class Keyboard
 
     public function addWebApp($text, $url)
     {
+        if (empty($this->keyboard)) {
+            $this->buttonType = self::INLINE;
+        }
+
+        if ($this->buttonType != self::INLINE) {
+            return $this;
+        }
         $this->keyboard[$this->row][] = ['text' => $text, 'web_app' => ['url' => $url]];
         return $this;
     }
