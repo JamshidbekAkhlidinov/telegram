@@ -4,6 +4,7 @@
 [![wakatime](https://wakatime.com/badge/user/d3110f77-d926-4238-8cdc-a8991b6685c0/project/018d46fc-a6e0-4576-b671-f3291d83cb6a.svg)](https://wakatime.com/badge/user/d3110f77-d926-4238-8cdc-a8991b6685c0/project/018d46fc-a6e0-4576-b671-f3291d83cb6a)
 [![Total Downloads](https://img.shields.io/packagist/dt/ustadev/telegram.svg)](https://packagist.org/packages/ustadev/telegram)
 
+https://youtu.be/WAvfrmFMCzI?feature=shared
 
 **O'rnatish**
 
