@@ -14,18 +14,18 @@ class Keyboard
     private const DEFAULT = 'default';
     private const REMOVE = 'remove';
 
-    private $keyboard = [];
+    private array $keyboard = [];
 
-    private $row = 0;
+    private int $row = 0;
 
-    private $buttonType = self::DEFAULT;
+    private string $buttonType = self::DEFAULT;
 
-    public $is_persistent = false;
-    public $resize_keyboard = true;
-    public $one_time_keyboard = false;
-    public $input_field_placeholder = "placeholder";
+    public bool $is_persistent = false;
+    public bool $resize_keyboard = true;
+    public bool $one_time_keyboard = false;
+    public string $input_field_placeholder = "placeholder";
 
-    public $selective = true;
+    public bool $selective = true;
 
 
     /**
@@ -67,7 +67,7 @@ class Keyboard
      * $keyboard->addDefault('Yes')
      * $keyboard->addDefault('No');
      */
-    public function addDefault($text): Keyboard
+    public function addDefault(string $text): Keyboard
     {
         if (empty($this->keyboard)) {
             $this->buttonType = self::DEFAULT;
@@ -98,7 +98,7 @@ class Keyboard
      * @example
      * $keyboard->addCallBack('👍 Like', 'like_button');
      */
-    public function addCallBack($text, $callback): Keyboard
+    public function addCallBack(string $text, $callback): Keyboard
     {
         if (empty($this->keyboard)) {
             $this->buttonType = self::INLINE;
@@ -128,7 +128,7 @@ class Keyboard
      * @example
      * $keyboard->addUrl('Visit USTADEV', 'https://ustadev.uz');
      */
-    public function addUrl($text, $url): Keyboard
+    public function addUrl(string $text, string $url): Keyboard
     {
         if (empty($this->keyboard)) {
             $this->buttonType = self::INLINE;
@@ -160,7 +160,7 @@ class Keyboard
      * @example
      * $keyboard->addSwitchInlineQueryCurrentChat('Search here', 'example query');
      */
-    public function addSwitchInlineQueryCurrentChat($text, $switch_inline_query_current_chat): Keyboard
+    public function addSwitchInlineQueryCurrentChat(string $text, string $switch_inline_query_current_chat): Keyboard
     {
         if (empty($this->keyboard)) {
             $this->buttonType = self::INLINE;
@@ -192,7 +192,7 @@ class Keyboard
      * @example
      * $keyboard->addSwitchInlineQuery('Search elsewhere', 'example query');
      */
-    public function addSwitchInlineQuery($text, $switch_inline_query): Keyboard
+    public function addSwitchInlineQuery(string $text, string $switch_inline_query): Keyboard
     {
         if (empty($this->keyboard)) {
             $this->buttonType = self::INLINE;
@@ -224,7 +224,7 @@ class Keyboard
      * @example
      * $keyboard->addWebApp('Open USTADEV App', 'https://ustadev.uz/app');
      */
-    public function addWebApp($text, $url): Keyboard
+    public function addWebApp(string $text, string $url): Keyboard
     {
         if (empty($this->keyboard)) {
             $this->buttonType = self::INLINE;
@@ -253,7 +253,7 @@ class Keyboard
      * @example
      * $keyboard->addRequestContact('📞 Share Contact');
      */
-    public function addRequestContact($text): Keyboard
+    public function addRequestContact(string $text): Keyboard
     {
         if (empty($this->keyboard)) {
             $this->buttonType = self::DEFAULT;
@@ -282,7 +282,7 @@ class Keyboard
      * @example
      * $keyboard->addRequestLocation('📍 Share Location');
      */
-    public function addRequestLocation($text): Keyboard
+    public function addRequestLocation(string $text): Keyboard
     {
         if (empty($this->keyboard)) {
             $this->buttonType = self::DEFAULT;
@@ -312,7 +312,7 @@ class Keyboard
      * @example
      * $keyboard->addRequestPoll('🗳 Create Poll', 'regular');
      */
-    public function addRequestPoll($text, $type = 'quiz'): Keyboard
+    public function addRequestPoll(string $text, string $type = 'quiz'): Keyboard
     {
         if (empty($this->keyboard)) {
             $this->buttonType = self::DEFAULT;

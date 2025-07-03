@@ -18,14 +18,14 @@ class BotApi
     /**
      * @var string Telegram Bot API token
      */
-    public $token;
+    public string $token;
 
     /**
      * BotApi constructor.
      *
      * @param string $token Telegram Bot API token
      */
-    public function __construct($token)
+    public function __construct(string $token)
     {
         $this->token = $token;
     }
@@ -38,9 +38,9 @@ class BotApi
      * @param string $queryId Unique identifier for the answered query
      * @param array $results An array of results for the inline query
      * @param array $options Optional parameters such as `cache_time`, `is_personal`, etc.
-     * @return mixed
+     * @return array
      */
-    public function answerInlineQuery($queryId, $results, $options = [])
+    public function answerInlineQuery(string $queryId, array $results, array $options = []): ?array
     {
         $fields = array_merge(['inline_query_id' => $queryId, 'results' => $results], $options);
         return $this->request('answerInlineQuery', $fields);
@@ -54,9 +54,9 @@ class BotApi
      * @param string $callback_id Unique identifier for the callback query to be answered
      * @param string $text Text of the notification to be shown to the user
      * @param array $options Optional parameters such as `show_alert`, `url`, `cache_time`, etc.
-     * @return mixed
+     * @return array
      */
-    public function answerCallbackQuery($callback_id, $text, $options = [])
+    public function answerCallbackQuery(string $callback_id, string $text, array $options = []): ?array
     {
         $fields = array_merge(['callback_query_id' => $callback_id, 'text' => $text, 'show_alert' => false], $options);
         return $this->request('answerCallbackQuery', $fields);
@@ -70,9 +70,9 @@ class BotApi
      * @param string|int $chat_id Unique identifier for the target chat or username of the target channel
      * @param string $text Text of the message to be sent
      * @param array $options Optional parameters such as `parse_mode`, `reply_markup`, `disable_notification`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendMessage($chat_id, $text, $options = [])
+    public function sendMessage($chat_id, string $text, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'text' => $text], $options);
         return $this->request('sendMessage', $fields);
@@ -87,9 +87,9 @@ class BotApi
      * @param string $photo Photo to send. Pass a file_id as string to send a photo that exists on the Telegram servers,
      *                      an HTTP URL for Telegram to get a photo from the Internet, or “attach://<file_attach_name>” to upload a new one.
      * @param array $options Optional parameters such as `caption`, `parse_mode`, `reply_markup`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendPhoto($chat_id, $photo, $options = [])
+    public function sendPhoto($chat_id, string $photo, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'photo' => $photo], $options);
         return $this->request('sendPhoto', $fields);
@@ -103,9 +103,9 @@ class BotApi
      * @param string|int $chat_id Unique identifier for the target chat or username of the target channel
      * @param string $video Video to send. Pass a file_id, an HTTP URL, or “attach://<file_attach_name>” for uploading.
      * @param array $options Optional parameters such as `caption`, `duration`, `width`, `height`, `supports_streaming`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendVideo($chat_id, $video, $options = [])
+    public function sendVideo($chat_id, $video, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'video' => $video], $options);
         return $this->request('sendVideo', $fields);
@@ -120,9 +120,9 @@ class BotApi
      * @param string|int $chat_id Unique identifier for the target chat or username of the target channel
      * @param string $animation Animation to send. Pass a file_id, HTTP URL, or “attach://<file_attach_name>”
      * @param array $options Optional parameters such as `duration`, `width`, `height`, `caption`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendAnimation($chat_id, $animation, $options = [])
+    public function sendAnimation($chat_id, string $animation, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'animation' => $animation], $options);
         return $this->request('sendAnimation', $fields);
@@ -136,9 +136,9 @@ class BotApi
      * @param string|int $chat_id Unique identifier for the target chat or username of the target channel
      * @param string $audio Audio file to send. Pass a file_id, HTTP URL, or “attach://<file_attach_name>”
      * @param array $options Optional parameters such as `caption`, `duration`, `performer`, `title`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendAudio($chat_id, $audio, $options = [])
+    public function sendAudio($chat_id, string $audio, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'audio' => $audio], $options);
         return $this->request('sendAudio', $fields);
@@ -152,9 +152,9 @@ class BotApi
      * @param string|int $chat_id Unique identifier for the target chat or username of the target channel
      * @param string $document Document to send. Pass a file_id, HTTP URL, or “attach://<file_attach_name>”
      * @param array $options Optional parameters such as `caption`, `parse_mode`, `disable_content_type_detection`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendDocument($chat_id, $document, $options = [])
+    public function sendDocument($chat_id, string $document, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'document' => $document], $options);
         return $this->request('sendDocument', $fields);
@@ -168,9 +168,9 @@ class BotApi
      * @param string|int $chat_id Unique identifier for the target chat or username of the target channel
      * @param string $sticker Sticker to send. Pass a file_id, HTTP URL, or “attach://<file_attach_name>”
      * @param array $options Optional parameters such as `disable_notification`, `reply_to_message_id`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendSticker($chat_id, $sticker, $options = [])
+    public function sendSticker($chat_id, string $sticker, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'sticker' => $sticker], $options);
         return $this->request('sendSticker', $fields);
@@ -182,9 +182,9 @@ class BotApi
      * @see https://core.telegram.org/bots/api#getstickerset
      *
      * @param string $name Name of the sticker set
-     * @return mixed
+     * @return array
      */
-    public function getStickerGroup($name)
+    public function getStickerGroup(string $name): ?array
     {
         return $this->request('getStickerSet', [
             'name' => $name,
@@ -200,9 +200,9 @@ class BotApi
      * @param string|int $chat_id Unique identifier for the target chat or username of the target channel
      * @param string $video_note Video note to send. Pass a file_id or “attach://<file_attach_name>”
      * @param array $options Optional parameters such as `duration`, `length`, `thumb`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendVideoNote($chat_id, $video_note, $options = [])
+    public function sendVideoNote($chat_id, string $video_note, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'video_note' => $video_note], $options);
         return $this->request('sendVideoNote', $fields);
@@ -216,9 +216,9 @@ class BotApi
      * @param string|int $chat_id Unique identifier for the target chat or username of the target channel
      * @param string $voice Voice file to send. Pass a file_id, HTTP URL, or “attach://<file_attach_name>”
      * @param array $options Optional parameters such as `caption`, `duration`, `parse_mode`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendVoice($chat_id, $voice, $options = [])
+    public function sendVoice($chat_id, string $voice, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'voice' => $voice], $options);
         return $this->request('sendVoice', $fields);
@@ -233,9 +233,9 @@ class BotApi
      * @param float $latitude Latitude of the location
      * @param float $longitude Longitude of the location
      * @param array $options Optional parameters such as `horizontal_accuracy`, `live_period`, `heading`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendLocation($chat_id, $latitude, $longitude, $options = [])
+    public function sendLocation($chat_id, float $latitude, float $longitude, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'latitude' => $latitude, 'longitude' => $longitude], $options);
         return $this->request('sendLocation', $fields);
@@ -252,16 +252,16 @@ class BotApi
      * @param string $title Name of the venue
      * @param string $address Address of the venue
      * @param array $options Optional parameters such as `foursquare_id`, `google_place_id`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendVenue($chat_id, $latitude, $longitude, $title, $address, $options = [])
+    public function sendVenue($chat_id, float $latitude, float $longitude, string $title, string $address, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'latitude' => $latitude, 'longitude' => $longitude, 'title' => $title, 'address' => $address], $options);
         return $this->request('sendVenue', $fields);
     }
 
     /**
-     * Sends a contact with phone number and first name.
+     * Sends a contact with phone_number and first name.
      *
      * @see https://core.telegram.org/bots/api#sendcontact
      *
@@ -269,9 +269,9 @@ class BotApi
      * @param string $phone_number Contact's phone number
      * @param string $first_name Contact's first name
      * @param array $options Optional parameters such as `last_name`, `vcard`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendContact($chat_id, $phone_number, $first_name, $options = [])
+    public function sendContact($chat_id, string $phone_number, string $first_name, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'phone_number' => $phone_number, 'first_name' => $first_name], $options);
         return $this->request('sendContact', $fields);
@@ -287,11 +287,11 @@ class BotApi
      * @param string $question Poll question, 1-300 characters
      * @param array $optionsData Array of answer options, 2-10 strings 1-100 characters each
      * @param array $options Optional parameters such as `is_anonymous`, `type`, `allows_multiple_answers`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendPoll($chat_id, $question, $optionsData, $options = [])
+    public function sendPoll($chat_id, string $question, array $optionsData, array $options = []): ?array
     {
-        $fields = array_merge(['chat_id' => $chat_id, 'question' => $question, 'options' => $optionsData], $options);
+        $fields = array_merge(['chat_id' => $chat_id, 'question' => $question, 'options' => json_encode($optionsData)], $options);
         return $this->request('sendPoll', $fields);
     }
 
@@ -303,9 +303,9 @@ class BotApi
      * @param string|int $chat_id Unique identifier for the target chat or username of the target channel
      * @param string|null $emoji Emoji on which the dice throw animation is based ('🎲', '🎯', '🏀', '⚽', '🎳', or '🎰')
      * @param array $options Optional parameters such as `disable_notification`, `reply_to_message_id`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendDice($chat_id, $emoji = null, $options = [])
+    public function sendDice($chat_id, string $emoji, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'emoji' => $emoji], $options);
         return $this->request('sendDice', $fields);
@@ -319,9 +319,9 @@ class BotApi
      * @param string|int $chat_id Unique identifier for the target chat
      * @param string $game_short_name Short name of the game, must be created via @BotFather
      * @param array $options Optional parameters such as `reply_markup`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendGame($chat_id, $game_short_name, $options = [])
+    public function sendGame($chat_id, string $game_short_name, array $options = []): ?array
     {
         $fields = array_merge(['chat_id' => $chat_id, 'game_short_name' => $game_short_name], $options);
         return $this->request('sendGame', $fields);
@@ -335,11 +335,11 @@ class BotApi
      * @param string|int $chat_id Unique identifier for the target chat
      * @param array $media Array of InputMediaPhoto/InputMediaVideo/InputMediaDocument/InputMediaAudio
      * @param array $options Optional parameters such as `disable_notification`, `reply_to_message_id`, etc.
-     * @return mixed
+     * @return array
      */
-    public function sendMediaGroup($chat_id, $media, $options = [])
+    public function sendMediaGroup($chat_id, array $media, array $options = []): ?array
     {
-        $fields = array_merge(['chat_id' => $chat_id, 'media' => $media], $options);
+        $fields = array_merge(['chat_id' => $chat_id, 'media' => json_encode($media)], $options);
         return $this->request('sendMediaGroup', $fields);
     }
 
@@ -352,9 +352,9 @@ class BotApi
      * @param string|int $from_chat_id Source chat ID
      * @param int $message_id Message ID in the source chat
      * @param array $options Optional parameters such as `caption`, `parse_mode`, etc.
-     * @return mixed
+     * @return array
      */
-    public function copyMessage($chat_id, $from_chat_id, $message_id, $options = [])
+    public function copyMessage($chat_id, $from_chat_id, int $message_id, array $options = []): ?array
     {
         $fields = array_merge(
             ['chat_id' => $chat_id, 'message_id' => $message_id, 'from_chat_id' => $from_chat_id],
@@ -372,12 +372,12 @@ class BotApi
      * @param string|int $from_chat_id Source chat ID
      * @param array $message_ids Array of message IDs in the source chat
      * @param array $options Optional parameters
-     * @return mixed
+     * @return array
      */
-    public function copyMessages($chat_id, $from_chat_id, $message_ids, $options = [])
+    public function copyMessages($chat_id, $from_chat_id, array $message_ids, array $options = []): ?array
     {
         $fields = array_merge(
-            ['chat_id' => $chat_id, 'message_ids' => $message_ids, 'from_chat_id' => $from_chat_id],
+            ['chat_id' => $chat_id, 'message_ids' => json_encode($message_ids), 'from_chat_id' => $from_chat_id],
             $options
         );
         return $this->request('copyMessages', $fields);
@@ -392,9 +392,9 @@ class BotApi
      * @param string|int $from_chat_id Source chat ID
      * @param int $message_id Message ID to forward
      * @param array $options Optional parameters such as `disable_notification`, etc.
-     * @return mixed
+     * @return array
      */
-    public function forwardMessage($chat_id, $from_chat_id, $message_id, $options = [])
+    public function forwardMessage($chat_id, $from_chat_id, int $message_id, array $options = []): ?array
     {
         $fields = array_merge(
             ['chat_id' => $chat_id, 'message_id' => $message_id, 'from_chat_id' => $from_chat_id],
@@ -412,12 +412,12 @@ class BotApi
      * @param string|int $from_chat_id Source chat ID
      * @param array $message_ids Array of message IDs to forward
      * @param array $options Optional parameters
-     * @return mixed
+     * @return array
      */
-    public function forwardMessages($chat_id, $from_chat_id, $message_ids, $options = [])
+    public function forwardMessages($chat_id, $from_chat_id, array $message_ids, array $options = []): ?array
     {
         $fields = array_merge(
-            ['chat_id' => $chat_id, 'message_ids' => $message_ids, 'from_chat_id' => $from_chat_id],
+            ['chat_id' => $chat_id, 'message_ids' => json_encode($message_ids), 'from_chat_id' => $from_chat_id],
             $options
         );
         return $this->request('forwardMessages', $fields);
@@ -428,10 +428,10 @@ class BotApi
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target channel
      * @param int $message_id Identifier of the message to delete
-     * @return mixed
+     * @return array
      * Doc: https://core.telegram.org/bots/api#deletemessage
      */
-    public function deleteMessage($chat_id, $message_id)
+    public function deleteMessage($chat_id, int $message_id): ?array
     {
         $fields = ['chat_id' => $chat_id, 'message_id' => $message_id];
         return $this->request('deleteMessage', $fields);
@@ -442,22 +442,22 @@ class BotApi
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target channel
      * @param array $message_ids Array of message IDs to delete
-     * @return mixed
+     * @return array
      * Doc: https://core.telegram.org/bots/api#deletemessages
      */
-    public function deleteMessages($chat_id, $message_ids)
+    public function deleteMessages($chat_id, array $message_ids): ?array
     {
-        $fields = ['chat_id' => $chat_id, 'message_id' => $message_ids];
+        $fields = ['chat_id' => $chat_id, 'message_ids' => json_encode($message_ids)];
         return $this->request('deleteMessages', $fields);
     }
 
     /**
      * Get basic information about the bot.
      *
-     * @return mixed
+     * @return array
      * Doc: https://core.telegram.org/bots/api#getme
      */
-    public function getMe()
+    public function getMe(): ?array
     {
         return $this->request('getMe');
     }
@@ -468,7 +468,7 @@ class BotApi
      * @return array|null Returns the decoded update array or null on failure
      * Doc: https://core.telegram.org/bots/api#getting-updates
      */
-    public function getWebhookUpdate()
+    public function getWebhookUpdate(): ?array
     {
         return json_decode(file_get_contents('php://input'), true);
     }
@@ -488,7 +488,7 @@ class BotApi
      *
      * Doc: https://core.telegram.org/bots/api
      */
-    public function request($method, $data = [])
+    public function request(string $method, array $data = []): ?array
     {
         $optionsData = [
             'parse_mode' => 'html',
