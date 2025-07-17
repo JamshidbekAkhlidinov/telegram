@@ -379,6 +379,10 @@ class Keyboard
         return $this;
     }
 
+    public function setType(string $type)
+    {
+        $this->buttonType = $type;
+    }
 
     /**
      * Builds and returns the final reply markup in JSON format based on the current keyboard type.
